@@ -2,41 +2,46 @@
 
 ![C++](https://img.shields.io/badge/C++-Arduino-00979D.svg)
 ![Hardware](https://img.shields.io/badge/Hardware-ESP8266-black.svg)
-![Security](https://img.shields.io/badge/Security-AES%2FRC4-red.svg)
+![Security](https://img.shields.io/badge/Security-AES%20%2F%20RC4%20Modified%20with%20Salt-red.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-(Arquitecto Técnico_JMC) **Sec-Vault** es un gestor de contraseñas de hardware *Air-Gapped* construido sobre un microcontrolador ESP8266 (D1 Mini). Diseñado para operar en un entorno de "Conocimiento Cero" (Zero-Knowledge), el dispositivo funciona como un Punto de Acceso (AP) WiFi totalmente aislado de internet. Una bóveda física de bolsillo con estética retro-cyberpunk para los verdaderos paranoicos de la privacidad.
+(Arquitecto Técnico_JMC) **Sec-Vault** es un gestor de contraseñas de hardware *Air-Gapped* construido sobre un microcontrolador ESP8266 (D1 Mini). Diseñado para operar en un entorno de "Conocimiento Cero" (Zero-Knowledge) , el dispositivo funciona como un Punto de Acceso (AP) WiFi totalmente aislado de internet. Una bóveda física de bolsillo con estética retro-cyberpunk para los verdaderos paranoicos de la privacidad.
 
 ## 🚀 La Filosofía de la Herramienta (Aislamiento Total)
 
-¿Por qué confiar tus contraseñas a la nube o a servidores de terceros? Esta herramienta nace de una premisa radical: **si no hay internet, no hay hackeo remoto**. Eres tú y tu hardware. El D1 Mini emite su propia red WiFi camuflada. Te conectas, desencriptas tus datos localmente en la memoria RAM de tu móvil/PC, y el hardware solo se encarga de guardar un bloque de texto cifrado incomprensible. Si pierdes el aparato, quien lo encuentre solo verá basura digital.
+¿Por qué confiar tus contraseñas a la nube o a servidores de terceros? Esta herramienta nace de una premisa radical: **si no hay internet, no hay hackeo remoto**. Eres tú y tu hardware. El D1 Mini emite su propia red WiFi camuflada. Te conectas, desencriptas tus datos localmente en la memoria RAM de tu móvil o PC, y el hardware solo se encarga de guardar un bloque de texto cifrado incomprensible. Si pierdes el aparato, quien lo encuentre solo verá basura digital.
 
-## 🧠 Características del Software (v2.1)
+## 🧠 Características del Software (V2)
 
-* **Arquitectura Zero-Knowledge:** El ESP8266 jamás conoce tus contraseñas ni tus claves maestras. Toda la criptografía (RC4 modificado con Salting dinámico) ocurre del lado del cliente mediante Javascript puro en el navegador.
-* **Estética Nostromo / Terminal Retro:** Interfaz de usuario inmersiva en fósforo verde. Respuestas rápidas, notificaciones emergentes (Toasts) y modo de auto-bloqueo por inactividad a los 3 minutos.
-* **Protocolo de Purga Segura:** Borrar un registro exige superar un test de seguridad aleatorio (configurado la primera vez que enciendes el dispositivo) para evitar accidentes o accesos no autorizados al equipo desbloqueado.
-* **Modo Camuflaje (Stealth WiFi):** Posibilidad de renombrar la red WiFi a nombres mundanos (ej: `Impresora_HP_Piso2`) para no levantar sospechas.
-* **Gestión Ágil:** Importación masiva de credenciales mediante archivos `.csv`, buscador integrado en tiempo real, generador de contraseñas robustas y extracción de Backups cifrados (`.bak`).
+* **Arquitectura Zero-Knowledge & Criptografía Local:** El ESP8266 jamás conoce tus contraseñas ni tus claves maestras. Toda la criptografía (RC4 modificado con Salting dinámico) ocurre en el cliente mediante Javascript puro en el navegador, superando de forma nativa las restricciones de la API de Web Crypto offline en conexiones HTTP sin HTTPS.
+* **🚨 Modo Pánico de Autodestrucción:** Permite configurar una contraseña falsa de "autodestrucción" durante la inicialización. Al introducirla en la pantalla de desbloqueo, el sistema purga y formatea el almacenamiento (`LittleFS`) instantáneamente sin dejar rastro de los datos.
+* **📊 Barra de Telemetría en Tiempo Real:** Monitoriza el estado de la bóveda mediante indicadores visuales de candado abierto/cerrado, visualización de la IP de conexión y contador dinámico de usuarios (`USERS_XX`) conectados simultáneamente a la red.
+* **⏱️ Temporizador de Exposición Activo:** Cuenta atrás de autobloqueo por inactividad visible directamente en la cabecera. Si pasas 3 minutos sin interacción, la memoria se limpia y el sistema te expulsa a la pantalla de identificación de forma automática.
+* **📝 Notas Secretas Desplegables:** Soporte para añadir bloques de notas multilínea (semillas de criptomonedas, códigos PIN/PUK o datos sensibles) integrados de forma compacta y ocultos tras un menú desplegable en la tabla.
+* **🏷️ Filtro por Etiquetas (Tags):** Posibilidad de categorizar tus credenciales utilizando etiquetas separadas por comas. El buscador en tiempo real permite filtrar tanto por nombre de servicio como por etiqueta.
+* **⚙️ Generador de Claves "A la Carta":** Crea contraseñas robustas de longitud regulable (hasta 64 caracteres) seleccionando explícitamente los conjuntos de caracteres requeridos (mayúsculas, minúsculas, números y símbolos).
+* **Camuflaje WiFi & Gestión Ágil:** Cambia de forma dinámica el nombre de la red SSID y su clave en el arranque para simular un dispositivo inofensivo (ej: `Impresora_HP_Piso2`). Permite importación masiva mediante archivos `.csv`, backup cifrado exportable (`.bak`) y un control de fuerza de clave maestra visual.
 
 ## 📂 Estructura del Repositorio
 
-* 📁 **`CODE/`**: Contiene el código fuente completo. El archivo `.ino` empaqueta tanto el backend en C++ para el ESP8266 como el frontend (HTML/CSS/JS) comprimido en la memoria PROGMEM para un despliegue ultra-rápido.
+* 📁 **`CODE/`**: Contiene el código fuente organizado para su despliegue:
+  * `BOBEDA_ESP32_jmcaamnog.ino` : Lógica del servidor web asíncrono en C++ para el ESP8266 con control de escritura segura (LittleFS).
+  * `index_v3.h` : Interfaz gráfica de usuario y motor criptográfico en JS aislado en PROGMEM para un rendimiento óptimo sin depender de servicios externos.
 
 ## ⚙️ Requisitos y Despliegue (Cómo flashear tu bóveda)
 
-Necesitarás una placa basada en el chip **ESP8266** (recomendado Wemos D1 Mini por su tamaño) y el IDE de Arduino.
+Necesitarás una placa basada en el chip **ESP8266** (Wemos D1 Mini o similar) y el IDE de Arduino.
 
-1. Clona el repositorio y abre el archivo `.ino` situado en la carpeta `CODE/` usando Arduino IDE.
-2. Instala las siguientes librerías desde el Gestor de Librerías del IDE o mediante los `.zip` de GitHub:
-   * `ESP8266WiFi` (Nativa del core de ESP8266)
-   * `LittleFS` (Nativa del core de ESP8266)
+1. Copia los archivos del directorio `CODE/` a tu espacio de trabajo local.
+2. Instala las siguientes librerías en tu Arduino IDE:
+   * `ESP8266WiFi` 
+   * `LittleFS` 
    * `ESPAsyncTCP`
-   * `ESPAsyncWebServer`
-3. Conecta tu placa por USB, selecciona el puerto COM adecuado y asegúrate de elegir el esquema de partición que deje espacio para **LittleFS** (ej. *FS: 1MB* o superior).
-4. Dale a **Subir**. 
+   * `ESPAsyncWebServer` 
+3. Conecta tu placa por USB, selecciona el puerto COM correspondiente y asegúrate de elegir un esquema de partición que deje espacio para la memoria de archivos **LittleFS** (por ejemplo, *FS: 1MB* o superior).
+4. Sube el programa a la placa.
 
-*Nota: La primera vez que te conectes a la red por defecto, el sistema te guiará por el protocolo de inicialización en rojo para definir tus claves inmutables.*
+*Nota: La primera vez que accedas a la red WiFi por defecto, el sistema te redirigirá a la pantalla de inicialización en rojo para que establezcas tus contraseñas inmutables, claves de purga y parámetros de camuflaje de red.*
 
 ## 👨‍💻 Autor
 
