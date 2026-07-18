@@ -1,9 +1,13 @@
 # SEC-VAULT - Bóveda de Contraseñas Offline (D1 Mini) 🔒🛡️
 
-![C++](https://img.shields.io/badge/C++-Arduino-00979D.svg)
-![Hardware](https://img.shields.io/badge/Hardware-ESP8266-black.svg)
-![Security](https://img.shields.io/badge/Security-AES%20%2F%20RC4%20Modified%20with%20Salt-red.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Role](https://img.shields.io/badge/Role-BIM%20%26%20ConTech-007ACC?logo=bim360&style=flat-square)
+![Location](https://img.shields.io/badge/Location-A%20Coru%C3%B1a%20%F0%9F%8C%8A-005B94?logo=lighthouse&logoColor=white&style=flat-square)
+![Maker](https://img.shields.io/badge/Maker-Software%20+%20Hardware-red?logo=makerbot&style=flat-square)
+![Hardware](https://img.shields.io/badge/Hardware-ESP8266-E7352C&style=flat-square)
+![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&style=flat-square)
+![Language](https://img.shields.io/badge/Language-C%2B%2B-00599C?logo=c%2B%2B&logoColor=white&style=flat-square)
+![Stars](https://img.shields.io/github/stars/jmcaamanog/bobeda-esp32?style=flat-square&color=yellow&logo=github)
+![License](https://img.shields.io/github/license/jmcaamanog/bobeda-esp32?style=flat-square&color=green)
 
 (Arquitecto Técnico_JMC) **Sec-Vault** es un gestor de contraseñas de hardware *Air-Gapped* construido sobre un microcontrolador ESP8266 (D1 Mini). Diseñado para operar en un entorno de "Conocimiento Cero" (Zero-Knowledge), el dispositivo funciona como un Punto de Acceso (AP) WiFi totalmente aislado de internet. Una bóveda física de bolsillo con estética retro-cyberpunk para los verdaderos paranoicos de la privacidad.
 
