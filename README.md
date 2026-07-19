@@ -4,6 +4,9 @@
 | :--- | :--- |
 | ![Profesión](https://img.shields.io/badge/Profesi%C3%B3n-Arquitectos%20T%C3%A9cnicos-2e7d32?logo=micro%3Abit&logoColor=white&style=plastic) <br> ![Role](https://img.shields.io/badge/Role-BIM%20%26%20ConTech-007ACC?logo=bim360&style=plastic) <br> ![Location](https://img.shields.io/badge/Location-A%20Coru%C3%B1a%20%F0%9F%8C%8A-005B94?logo=lighthouse&logoColor=white&style=plastic) <br> ![Maker](https://img.shields.io/badge/Maker-Software%20+%20Hardware-red?logo=makerbot&style=plastic) | ![Hardware](https://img.shields.io/badge/Hardware-ESP8266-E7352C&style=plastic) <br> ![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&style=plastic) <br> ![Language](https://img.shields.io/badge/Language-C%2B%2B-00599C?logo=c%2B%2B&logoColor=white&style=plastic) <br> ![Stars](https://img.shields.io/github/stars/jmcaamanog/bobeda-esp32?style=plastic&color=yellow&logo=github) <br> ![License](https://img.shields.io/github/license/jmcaamanog/bobeda-esp32?style=plastic&color=green) |
 
+| 🏗️ Perfil & ConTech | 📈 Repositorio & Enlaces |
+| :--- | :--- |
+
 (Arquitecto Técnico_JMC) **Sec-Vault** es un gestor de contraseñas de hardware *Air-Gapped* construido sobre un microcontrolador ESP8266 (D1 Mini). Diseñado para operar en un entorno de "Conocimiento Cero" (Zero-Knowledge), el dispositivo funciona como un Punto de Acceso (AP) WiFi totalmente aislado de internet. Una bóveda física de bolsillo con estética retro-cyberpunk para los verdaderos paranoicos de la privacidad.
 
 ## 🚀 La Filosofía de la Herramienta (Aislamiento Total)
